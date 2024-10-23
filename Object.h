@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PARTICIPANT
-#define PARTICIPANT
+#ifndef OBJECT
+#define OBJECT
 
 #include <string>
 #include <vector>
@@ -70,9 +70,10 @@ struct Object {
 
 		file << "p " << objectName << ' ' << squareMeters << ' ' << finalPrice << ' ' << metersToMetro << ' ' << rating.rate << '\n';
 
+		file.close();
+
 		rating.addToFile();
 
-		file.close();
 	}
 	friend ostream& operator <<(ostream& out, Object& o) {
 		out << "p " << o.objectName << ' ' << o.squareMeters << ' ' << o.finalPrice << ' ' << o.metersToMetro << ' ' << o.rating.rate << '\n' << o.rating;
@@ -92,7 +93,7 @@ struct Object {
 	}
 
 	void calculatePrice() {
-		finalPrice = (rating.rate * metersToMetro / 52) * krimeaSquareMeters / (squareMeters * 52 * 7);
+		finalPrice = (rating.rate * metersToMetro / 52) * krimeaSquareMeters / (squareMeters * 52);
 	}
 };
-#endif // !PARTICIPANT
+#endif // !OBJECT

@@ -8,7 +8,7 @@ int main() {
 	MusicPlayer::playMusic();
 
 	UI ui(UI::colors::Pink);
-	Database database(&ui);
+	Database database;
 
 	ui.setDatabase(&database);
 

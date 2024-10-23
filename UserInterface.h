@@ -14,8 +14,12 @@ class UI {
 private:
 	Database* db = nullptr;
 
+	static UI* instance;
 
 public:
+	static UI* GetInstance() {
+		return instance;
+	}
 	// Цвета 0-Белый,1-Красный,2-Синий,3-Зелёный,4-Оранжевый,5-Розовый,6-Жёлтый.
 	enum colors : int {
 		Default,
@@ -28,6 +32,10 @@ public:
 		Yellow
 	};
 	UI(UI::colors defaultColor = White) {
+		if (instance != nullptr) delete this;
+
+		instance = this;
+
 		setlocale(LC_ALL, "Russian");
 		this->defaultColor = defaultColor;
 		setColor(defaultColor);
@@ -69,6 +77,13 @@ public:
 			break;
 		}
 	}
+	/// <summary>
+	/// Ввод данных заданного типа.
+	/// </summary>
+	/// <typeparam name="T">Тип вводимых данных.</typeparam>
+	/// <param name="text">Подсказка ввода.</param>
+	/// <param name="newLine">Переводить строку или нет.</param>
+	/// <returns></returns>
 	template<typename T>
 	T input(string text, bool newLine = true) {
 		T input{};
@@ -457,6 +472,7 @@ public:
 		}
 	}
 };
+UI* UI::instance = nullptr;
 
 // Определения методов
 
@@ -466,11 +482,11 @@ void Database::calculateObjectsRatings()
 		p->rating.calculateRating();
 }
 
-Database::Database(UI* ui) {
+Database::Database() {
 	readObjectsFromFile();
 	calculateObjectsRatings();
 
-	this->ui = ui;
+	this->ui = UI::GetInstance();
 }
 Database::~Database() {
 	writeAccountsToFile();
@@ -479,83 +495,78 @@ Database::~Database() {
 }
 
 void Database::login() {
+	// Предложить регистрацию
+	bool isRegistered = ui->inputRangeInstant("Вы уже зарегистрированы в системе? (&20-Нет&0,&41-Да&0)", 0, 1);
+
+	if (!isRegistered) {
+		bool wantRegister = ui->inputRangeInstant("Хотите зарегистрироваться? (&20-Нет&0,&41-Да&0)", 0, 1);
+		if (wantRegister) {
+			addAccount();
+			ui->printColor("&4Регистрация завершена, ожидайте подтверждения администратором");
+		}
+	}
+	readAccountsFromFile();
+	if (accounts.empty())
+	{
+		MusicPlayer::playSound(Warning);
+		ui->printColor("&2Нет аккаунтов для авторизации");
+		ui->printColor("Создайте аккаунт администратора для начала работы с базой данных");
+		addAccount(1);
+		currentAccount = accounts.at(0);
+		accounts.at(0)->access = true;
+		ui->printColor("&4Авторизация успешна");
+		return;
+	}
 	while (true) {
 		// Обработка исключительных ситуаций
-		if (currentAccount) {
-			MusicPlayer::playSound(Error);
-			ui->printColor("&2Пользователь уже авторизован");
-			return;
-		}
-		readAccountsFromFile();
-		if (accounts.empty())
-		{
-			MusicPlayer::playSound(Warning);
-			ui->printColor("&2Нет аккаунтов для авторизации");
-			ui->printColor("Создайте аккаунт администратора для начала работы с базой данных");
-			addAccount(1);
-			currentAccount = accounts.at(0);
-			accounts.at(0)->access = true;
-			ui->printColor("&4Авторизация успешна");
-			return;
-		}
-		// Предложить регистрацию
-		bool isRegistered = ui->inputRangeInstant("Вы уже зарегистрированы в системе? (&20-Нет&0,&41-Да&0)", 0, 1);
+		try {
+			// Авторизация
+			if (currentAccount)
+				throw(AccountException(AccountExceptionType::AlreadyAuthorized, "", currentAccount->login, currentAccount->password));
+			else {
+				system("cls");
+				ui->printColor("Войдите в аккаунт");
+				string login;
 
-		if (!isRegistered) {
-			bool wantRegister = ui->inputRangeInstant("Хотите зарегистрироваться? (&20-Нет&0,&41-Да&0)", 0, 1);
-			if (wantRegister) {
-				addAccount();
-				ui->printColor("&4Регистрация завершена, ожидайте подтверждения администратором");
-			}
-		}
-		// Авторизация
-		else {
-			system("cls");
-			ui->printColor("Войдите в аккаунт");
-			string login;
-
-			do {
 				login = ui->input<string>("Введите логин");
-				if (checkLogin(login)) {
-					break;
-				}
-				else if (!checkLogin(login)) ui->printColor("&2Неверный логин!");
-				MusicPlayer::playSound(Error);
-			} while (true);
+				if (!checkLogin(login))
+					throw(AccountException(AccountExceptionType::AlreadyAuthorized, "", login));
 
-			int accountID = findID(login);
-			if (!accounts.at(accountID)->access) {
-				ui->printColor("&2У этого аккаунта нету доступа. Ожидайте подтверждения администратором.");
+				int accountID = findID(login);
+				if (!accounts.at(accountID)->access)
+					throw(AccountException(AccountExceptionType::NoAccess, "", login));
+
+
+				int attempts = 3;
+				string password;
+
+				do {
+					password = ui->_input("Введите пароль");
+					if (checkPassword(accountID, password) || attempts-- < 0) {
+						break;
+					}
+					ui->printColor("&2Неверный пароль!");
+					MusicPlayer::playSound(Button_Restricted);
+				} while (true);
+
+				if (attempts < 0)
+					throw(AccountException(AccountExceptionType::WrongPassword, "&2Вы неверно ввели пароль больше 3 раз, попробуйте снова.", login, password));
+
 				MusicPlayer::playSound(Access, true);
-				MusicPlayer::playSound(Denied);
-				continue;
+				MusicPlayer::playSound(Granted);
+
+				currentAccount = accounts.at(accountID);
+				ui->printColor("&4Авторизация успешна");
 			}
-
-			int attempts = 3;
-			string password;
-
-			do {
-				password = ui->_input("Введите пароль");
-				if (checkPassword(accountID, password) || attempts-- < 0) {
-					break;
-				}
-				ui->printColor("&2Неверный пароль!");
-				MusicPlayer::playSound(Button_Restricted);
-			} while (true);
-
-			MusicPlayer::playSound(Access, true);
-			if (attempts < 0) {
-				MusicPlayer::playSound(Denied);
-				ui->printColor("&2Вы неверно ввели пароль больше 3 раз, попробуйте снова.");
-				continue;
-			}
-
-			MusicPlayer::playSound(Granted);
-
-			currentAccount = accounts.at(accountID);
-			ui->printColor("&4Авторизация успешна");
+			return;
 		}
-		return;
+		catch (AccountException ex) {
+
+			ui->printColor(ex.what());
+
+			if (ex.whatType() == AccountExceptionType::AlreadyAuthorized) return;
+
+		}
 	}
 }
 
@@ -785,8 +796,8 @@ void Database::showRateObjectInfo() {
 		table.emplace_back(objects.at(i)->objectName);
 		table.emplace_back(to_string(objects.at(i)->finalPrice));
 		table.emplace_back(to_string(objects.at(i)->rating.rate));
-			ui->printTable(table, 15);
-		
+		ui->printTable(table, 15);
+
 	}
 	SetConsoleCP(866);
 }

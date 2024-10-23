@@ -4,7 +4,7 @@
 
 #include "Music.h"
 #include "Account.h"
-#include "Participant.h"
+#include "Object.h"
 #include <fstream>
 #include <algorithm>
 
@@ -32,7 +32,7 @@ private:
 	void calculateObjectsRatings();
 
 public:
-	Database(UI* ui);
+	Database();
 
 	~Database();
 
