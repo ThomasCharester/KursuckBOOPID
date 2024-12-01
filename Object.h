@@ -97,15 +97,15 @@ namespace realtyPriceRate {
 		/// <summary>
 		/// Площадь Крыма.
 		/// </summary>
-		int krimeaSquareMeters = 27000;
+		int GOSTSquareMetersPrice = 27000;
 	public:
 		Object() {};
-		Object(string objectName, int squareMeters, int finalPrice, int metersToMetro, int krimeaSquareMeters) {
+		Object(string objectName, int squareMeters, int finalPrice, int metersToMetro, int GOSTSquareMetersPrice) {
 			this->objectName = objectName;
 			this->squareMeters = squareMeters;
 			this->finalPrice = finalPrice;
 			this->metersToMetro = metersToMetro;
-			this->krimeaSquareMeters = krimeaSquareMeters;
+			this->GOSTSquareMetersPrice = GOSTSquareMetersPrice;
 			this->rating.rate = 0;
 		}
 		/// <summary>
@@ -184,7 +184,7 @@ namespace realtyPriceRate {
 	{
 	public:
 		House() {}
-		House(string objectName, int squareMeters, int finalPrice, int metersToMetro, int krimeaSquareMeters) : Object(objectName, squareMeters, finalPrice, metersToMetro, krimeaSquareMeters) {}
+		House(string objectName, int squareMeters, int finalPrice, int metersToMetro, int GOSTSquareMetersPrice) : Object(objectName, squareMeters, finalPrice, metersToMetro, GOSTSquareMetersPrice) {}
 		void addRating(string login, int rating) override 
 		{
 			this->rating.addRating(login, rating);
@@ -202,7 +202,7 @@ namespace realtyPriceRate {
 		}
 		void calculatePrice() override {
 			rating.calculateRating();
-			finalPrice = (rating.rate * metersToMetro / 52) * krimeaSquareMeters / (squareMeters * 52);
+			finalPrice = (rating.rate * metersToMetro / 52) * GOSTSquareMetersPrice / (squareMeters * 52);
 		}
 
 		void getGenericInfo(vector<string>& row) override {
@@ -231,7 +231,7 @@ namespace realtyPriceRate {
 	{
 	public:
 		Office() {}
-		Office(string objectName, int squareMeters, int finalPrice, int metersToMetro, int krimeaSquareMeters) : Object(objectName, squareMeters, finalPrice, metersToMetro, krimeaSquareMeters) {}
+		Office(string objectName, int squareMeters, int finalPrice, int metersToMetro, int GOSTSquareMetersPrice) : Object(objectName, squareMeters, finalPrice, metersToMetro, GOSTSquareMetersPrice) {}
 		void addRating(string login, int rating) override
 		{
 			this->rating.addRating(login, rating);
@@ -249,7 +249,7 @@ namespace realtyPriceRate {
 		}
 		void calculatePrice() override {
 			rating.calculateRating();
-			finalPrice = (rating.rate * metersToMetro / 52) * krimeaSquareMeters / (squareMeters * 52);
+			finalPrice = (rating.rate/100) * (metersToMetro + squareMeters) / (GOSTSquareMetersPrice / 5252);
 		}
 
 		void getGenericInfo(vector<string>& row) override {
