@@ -1,5 +1,7 @@
 #include "UserInterface.h"
 
+using namespace realtyPriceRate;
+
 int main() {
 
 	//MusicPlayer player;
