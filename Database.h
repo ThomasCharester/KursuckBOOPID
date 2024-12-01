@@ -250,13 +250,11 @@ namespace realtyPriceRate {
 		{
 			fstream file("objects.txt", ios::out);
 			file << objects.size() << '\n';
-
-			//for (int i = 0; i < objects.size(); i++)
-			//	objects.at(i)->addToFile();
+			file.close();
 
 			for (int i = 0; i < objects.size(); i++)
-				file << objects.at(i);
-			file.close();
+				objects.at(i)->addToFile();
+
 		}
 		/// <summary>
 		/// Прочитать объекты из файла.
@@ -280,20 +278,21 @@ namespace realtyPriceRate {
 			for (int i = 0; i < size; )
 			{
 				getline(file, temp, ' ');
-				if (temp == "p") {
+				if (temp == "h" || temp == "o") {
 					i++;
-					string objectName;
+					string objectName,objectType = temp;
 					int squareMeters, finalPrice, rate, metersToMetro;
 					getline(file, objectName, ' ');
 					getline(file, temp, ' ');
 					squareMeters = stoi(temp);
 					getline(file, temp, ' ');
 					finalPrice = stoi(temp);
-					getline(file, temp, ' ');
-					metersToMetro = stoi(temp);
 					getline(file, temp, '\n');
-					rate = stoi(temp);
-					objects.emplace_back(new Object(objectName, squareMeters, finalPrice, metersToMetro, 27000, rate));
+					metersToMetro = stoi(temp);
+					if (objectType == "h")
+						objects.emplace_back(new House(objectName, squareMeters, finalPrice, metersToMetro, 27000));
+					else if (objectType == "o")
+						objects.emplace_back(new Office(objectName, squareMeters, finalPrice, metersToMetro, 27000));
 				}
 				else if (temp == "r") {
 					string login;
@@ -301,9 +300,10 @@ namespace realtyPriceRate {
 					getline(file, login, ' ');
 					getline(file, temp, '\n');
 					rating = stoi(temp);
-					objects.at(objects.size() - 1)->rating.addRating(login, rating);
+					objects.at(objects.size() - 1)->addRating(login, rating);
+
+					objects[i - 1]->calculatePrice();
 				}
-				objects[i - 1]->calculatePrice();
 			}
 
 			file.close();

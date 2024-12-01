@@ -9,7 +9,7 @@ int main() {
 
 	MusicPlayer::playMusic();
 
-	UI ui(UI::colors::Pink);
+	UI ui(UI::colors::Yellow);
 	Database database;
 
 	ui.setDatabase(&database);
@@ -35,7 +35,6 @@ int main() {
 		if (!choice) {
 			MusicPlayer::playSound(Exit1);
 			if (!ui.confirm()) continue; /// XD
-			ui.printColor("&6Досвидания господин");
 			return 0;
 		}
 	}

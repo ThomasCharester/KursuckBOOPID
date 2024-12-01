@@ -7,10 +7,13 @@
 #include <conio.h>
 #include "Windows.h"
 
+
 namespace realtyPriceRate {
 	//#define SOUND
 
-	#define ANIMATIONSPEED 30
+#define DEFAULTCOLOR 7
+
+#define ANIMATIONSPEED 30
 
 	class UI {
 	private:
@@ -311,7 +314,7 @@ namespace realtyPriceRate {
 		/// </summary>
 		/// <returns>Согласие или несогласие.</returns>
 		const bool confirm() {
-			return inputRangeInstant("&6Вы уверены? (&20-Нет&6,&41-Да&6)", 0, 1);
+			return inputRangeInstant("&0Вы уверены? (&20-Нет&0,&41-Да&0)", 0, 1);
 		}
 
 		// Наборы меню	
@@ -320,7 +323,7 @@ namespace realtyPriceRate {
 			while (true) {
 				if (!db->isLoggedIn()) return;
 				system("cls");
-				printHeader("&6Добро пожаловать " + db->getLogin(), 50);
+				printHeader("&0Добро пожаловать " + db->getLogin(), 50);
 				printColor("1 - Редактировать список объектов");
 				printColor("2 - Редактировать список аккаунтов");
 				printColor("0 - Выйти");
@@ -344,7 +347,7 @@ namespace realtyPriceRate {
 			while (true) {
 				if (!db->isLoggedIn()) return;
 				system("cls");
-				printHeader("&6Добро пожаловать " + db->getLogin(), 50);
+				printHeader("&0Добро пожаловать " + db->getLogin(), 50);
 				printColor("1 - Посмотреть на список объектов");
 				printColor("2 - Посмотреть на список объектов по рейтингу");
 				printColor("3 - Поиск в списке объектов");
@@ -383,7 +386,7 @@ namespace realtyPriceRate {
 			while (true) {
 				if (!db->isLoggedIn()) return;
 				system("cls");
-				printHeader("&6Добро пожаловать " + db->getLogin(), 50);
+				printHeader("&0Добро пожаловать " + db->getLogin(), 50);
 				printColor("1 - Посмотреть на список объектов");
 				printColor("2 - Оценить объект");
 				printColor("3 - Сменить пароль аккаунта");
@@ -559,7 +562,7 @@ namespace realtyPriceRate {
 	void Database::calculateObjectsRatings()
 	{
 		for (Object* p : objects)
-			p->rating.calculateRating();
+			p->calculatePrice();
 	}
 
 	Database::Database() {
@@ -575,16 +578,6 @@ namespace realtyPriceRate {
 	}
 
 	void Database::login() {
-		// Предложить регистрацию
-		bool isRegistered = ui->inputRangeInstant("Вы уже зарегистрированы в системе? (&20-Нет&0,&41-Да&0)", 0, 1);
-
-		if (!isRegistered) {
-			bool wantRegister = ui->inputRangeInstant("Хотите зарегистрироваться? (&20-Нет&0,&41-Да&0)", 0, 1);
-			if (wantRegister) {
-				addAccount();
-				ui->printColor("&4Регистрация завершена, ожидайте подтверждения администратором");
-			}
-		}
 		readAccountsFromFile();
 		if (accounts.empty())
 		{
@@ -596,6 +589,17 @@ namespace realtyPriceRate {
 			accounts.at(0)->access = true;
 			ui->printColor("&4Авторизация успешна");
 			return;
+		}
+		// Предложить регистрацию
+		bool isRegistered = ui->inputRangeInstant("Вы уже зарегистрированы в системе? (&20-Нет&0,&41-Да&0)", 0, 1);
+
+		if (!isRegistered) {
+			bool wantRegister = ui->inputRangeInstant("Хотите зарегистрироваться? (&20-Нет&0,&41-Да&0)", 0, 1);
+			if (wantRegister) {
+				addAccount();
+				ui->printColor("&4Регистрация завершена, ожидайте подтверждения администратором");
+			}
+			else return;
 		}
 		while (true) {
 			// Обработка исключительных ситуаций
@@ -610,7 +614,7 @@ namespace realtyPriceRate {
 
 					login = ui->input<string>("Введите логин");
 					if (!checkLogin(login))
-						throw(AccountException(AccountExceptionType::AlreadyAuthorized, "", login));
+						throw(AccountException(AccountExceptionType::WrongLogin, "", login));
 
 					int accountID = findID(login);
 					if (!accounts.at(accountID)->access)
@@ -643,8 +647,9 @@ namespace realtyPriceRate {
 			catch (AccountException ex) {
 
 				ui->printColor(ex.what());
+				ui->pressAnyButton();
 
-				if (ex.whatType() == AccountExceptionType::AlreadyAuthorized) return;
+				if (ex.whatType() == AccountExceptionType::AlreadyAuthorized || ex.whatType() == AccountExceptionType::NoAccess || ex.whatType() == AccountExceptionType::WrongLogin) return;
 
 			}
 		}
@@ -803,6 +808,7 @@ namespace realtyPriceRate {
 
 		SetConsoleCP(1251);
 		table.emplace_back("ID");
+		table.emplace_back("Тип");
 		table.emplace_back("Название");
 		table.emplace_back("Площадь квм2");
 		table.emplace_back("Цена");
@@ -813,10 +819,7 @@ namespace realtyPriceRate {
 		for (int i = 0; i < objects.size(); i++) {
 			table.clear();
 			table.emplace_back(to_string(i));
-			table.emplace_back(objects.at(i)->objectName);
-			table.emplace_back(to_string(objects.at(i)->squareMeters));
-			table.emplace_back(to_string(objects.at(i)->finalPrice));
-			table.emplace_back(to_string(objects.at(i)->metersToMetro));
+			objects.at(i)->getGenericInfo(table);
 			ui->printTable(table, 15);
 		}
 		SetConsoleCP(866);
@@ -833,6 +836,7 @@ namespace realtyPriceRate {
 
 		SetConsoleCP(1251);
 		table.emplace_back("ID");
+		table.emplace_back("Тип");
 		table.emplace_back("Название");
 		table.emplace_back("Площадь квм2");
 		table.emplace_back("Цена");
@@ -844,11 +848,7 @@ namespace realtyPriceRate {
 		for (int i = 0; i < objects.size(); i++) {
 			table.clear();
 			table.emplace_back(to_string(i));
-			table.emplace_back(objects.at(i)->objectName);
-			table.emplace_back(to_string(objects.at(i)->squareMeters));
-			table.emplace_back(to_string(objects.at(i)->finalPrice));
-			table.emplace_back(to_string(objects.at(i)->metersToMetro));
-			table.emplace_back(to_string(objects.at(i)->rating.rate));
+			objects.at(i)->getDetailInfo(table);
 			ui->printTable(table, 15);
 		}
 		SetConsoleCP(866);
@@ -864,6 +864,7 @@ namespace realtyPriceRate {
 
 		SetConsoleCP(1251);
 		table.emplace_back("ID");
+		table.emplace_back("Тип");
 		table.emplace_back("Название");
 		table.emplace_back("Цена");
 		table.emplace_back("Оценка");
@@ -873,9 +874,7 @@ namespace realtyPriceRate {
 		for (int i = 0; i < objects.size(); i++) {
 			table.clear();
 			table.emplace_back(to_string(i));
-			table.emplace_back(objects.at(i)->objectName);
-			table.emplace_back(to_string(objects.at(i)->finalPrice));
-			table.emplace_back(to_string(objects.at(i)->rating.rate));
+			objects.at(i)->getRateInfo(table);
 			ui->printTable(table, 15);
 
 		}
@@ -883,11 +882,20 @@ namespace realtyPriceRate {
 	}
 
 	void Database::addObject() {
+		int objectType = ui->inputRange<int>("Введите тип недвижимости (1 - Дом, 2 - Офис)", 1, 2);
 		string objectName = ui->input<string>("Введите название объекта");
 		int squareMeters = ui->inputRange<int>("Введите площадь", 0, 1000);
-		int metersToMetro = ui->inputRange<int>("Введите расстояние до метро", 0, 1000);
+		int metersToMetro = ui->inputRange<int>("Введите расстояние до метро", 0, 10000);
 
-		objects.emplace_back(new Object(objectName, squareMeters, 0, metersToMetro, 27000, 0));
+		switch (objectType)
+		{
+		case 1:
+			objects.emplace_back(new House(objectName, squareMeters, 0, metersToMetro, 27000));
+			break;
+		case 2:
+			objects.emplace_back(new Office(objectName, squareMeters, 0, metersToMetro, 27000));
+			break;
+		}
 
 		MusicPlayer::playSound(Add);
 
@@ -925,9 +933,7 @@ namespace realtyPriceRate {
 		int id = ui->inputRange<int>("Выберите номер оцениваемого объекта", 0, objects.size() - 1);
 		int rating = ui->inputRange<int>("Введите оценку", 0, 100);
 
-		objects.at(id)->rating.addRating(getLogin(), rating);
-		objects.at(id)->rating.calculateRating();
-
+		objects.at(id)->addRating(getLogin(), rating);
 		objects.at(id)->calculatePrice();
 
 		writeObjectsToFile();
@@ -946,6 +952,7 @@ namespace realtyPriceRate {
 
 		SetConsoleCP(1251);
 		table.emplace_back("ID");
+		table.emplace_back("Тип");
 		table.emplace_back("Название");
 		table.emplace_back("Площадь квм2");
 		table.emplace_back("Цена");
@@ -955,15 +962,13 @@ namespace realtyPriceRate {
 		ui->printTable(table, 15, true);
 
 		for (int i = 0; i < objects.size(); i++) {
-			if (objects.at(i)->objectName != objectName) continue;
-			table.clear();
-			table.emplace_back(to_string(i));
-			table.emplace_back(objects.at(i)->objectName);
-			table.emplace_back(to_string(objects.at(i)->squareMeters));
-			table.emplace_back(to_string(objects.at(i)->finalPrice));
-			table.emplace_back(to_string(objects.at(i)->metersToMetro));
-			table.emplace_back(to_string(objects.at(i)->rating.rate));
-			ui->printTable(table, 15);
+			if (*objects.at(i) == objectName)
+			{
+				table.clear();
+				table.emplace_back(to_string(i));
+				objects.at(i)->getDetailInfo(table);
+				ui->printTable(table, 15);
+			}
 		}
 		SetConsoleCP(866);
 	}
@@ -980,6 +985,7 @@ namespace realtyPriceRate {
 
 		SetConsoleCP(1251);
 		table.emplace_back("ID");
+		table.emplace_back("Тип");
 		table.emplace_back("Название");
 		table.emplace_back("Площадь квм2");
 		table.emplace_back("Цена");
@@ -989,15 +995,13 @@ namespace realtyPriceRate {
 		ui->printTable(table, 15, true);
 
 		for (int i = 0; i < objects.size(); i++) {
-			if (objects.at(i)->metersToMetro != metersToMetro) continue;
-			table.clear();
-			table.emplace_back(to_string(i));
-			table.emplace_back(objects.at(i)->objectName);
-			table.emplace_back(to_string(objects.at(i)->squareMeters));
-			table.emplace_back(to_string(objects.at(i)->finalPrice));
-			table.emplace_back(to_string(objects.at(i)->metersToMetro));
-			table.emplace_back(to_string(objects.at(i)->rating.rate));
-			ui->printTable(table, 15);
+			if (*objects.at(i) == metersToMetro)
+			{
+				table.clear();
+				table.emplace_back(to_string(i));
+				objects.at(i)->getDetailInfo(table);
+				ui->printTable(table, 15);
+			}
 		}
 
 		SetConsoleCP(866);

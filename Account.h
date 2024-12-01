@@ -45,31 +45,27 @@ namespace defaultLabStructures {
 			this->exceptionType = exceptionType;
 			this->hint = hint;
 		}
-		const char* what() {
+		const string what() {
 			string exceptionText;
 			switch (exceptionType) {
 			case AccountExceptionType::WrongLogin:
-				exceptionText = "&2This login does not exist\n&3log: " + login + "\npassword: " + password + "\n\n" + hint;
+				exceptionText = "&2Данной учётной записи не существует\n&3Логин: " + login + "\nПароль: " + password + "\n\n" + hint;
 				MusicPlayer::playSound(Error);
-				return exceptionText.c_str();
-				break;
+				return exceptionText;
 			case AccountExceptionType::WrongPassword:
-				exceptionText = "&2Wrong password\n&3log : " + login + "\nTried password : " + password + "\n\n" + hint;
+				exceptionText = "&2Неверный пароль\n&3Логин : " + login + "\nПредполагаемый пароль : " + password + "\n\n" + hint;
 				MusicPlayer::playSound(Button_Restricted, true);
 				MusicPlayer::playSound(Access, true);
 				MusicPlayer::playSound(Denied);
-				return exceptionText.c_str();
-				break;
+				return exceptionText;
 			case AccountExceptionType::NoAccess:
-				exceptionText = "&2This account have no access. Wait until administrator give access.\n&3log: " + login + "\npassword: " + password + "\n\n" + hint;
+				exceptionText = "&2Данная учётная запись не имеет доступа, ожидайте пока администратор не выдаст доступ.\n&3Логин: " + login + "\nПароль: " + password + "\n\n" + hint;
 				MusicPlayer::playSound(Access, true);
 				MusicPlayer::playSound(Denied);
-				return exceptionText.c_str();
-				break;
+				return exceptionText;
 			case AccountExceptionType::AlreadyAuthorized:
-				exceptionText = "&2You are already authorized.\n&3log: " + login + "\npassword: " + password + "\n\n" + hint;
-				return exceptionText.c_str();
-				break;
+				exceptionText = "&2Вы уже авторизованы.\n&3Логин: " + login + "\nПароль: " + password + "\n\n" + hint;
+				return exceptionText;
 			}
 			return "Custom C++ Exception";
 		}
