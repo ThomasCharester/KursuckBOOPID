@@ -182,7 +182,6 @@ namespace realtyPriceRate {
 					printColor("&2Введите значение в диапазоне от " + to_string(min) + " до " + to_string(max));
 				}
 				else {
-					MusicPlayer::playSound(Button_Press1);
 					return input - 48;
 				}
 			}
@@ -491,7 +490,6 @@ namespace realtyPriceRate {
 		void sortMenu() {
 			while (true) {
 				if (!db->isLoggedIn() || db->isEmpty()) {
-					MusicPlayer::playSound(Button_Failure);
 					return;
 				}
 				system("cls");
@@ -527,7 +525,6 @@ namespace realtyPriceRate {
 		void searchMenu() {
 			while (true) {
 				if (!db->isLoggedIn() || db->isEmpty()) {
-					MusicPlayer::playSound(Button_Failure);
 					return;
 				}
 				system("cls");
@@ -581,7 +578,6 @@ namespace realtyPriceRate {
 		readAccountsFromFile();
 		if (accounts.empty())
 		{
-			MusicPlayer::playSound(Warning);
 			ui->printColor("&2Нет аккаунтов для авторизации");
 			ui->printColor("Создайте аккаунт администратора для начала работы с базой данных");
 			addAccount(1);
@@ -630,14 +626,11 @@ namespace realtyPriceRate {
 							break;
 						}
 						ui->printColor("&2Неверный пароль!");
-						MusicPlayer::playSound(Button_Restricted);
 					} while (true);
 
 					if (attempts < 0)
 						throw(AccountException(AccountExceptionType::WrongPassword, "&2Вы неверно ввели пароль больше 3 раз, попробуйте снова.", login, password));
 
-					MusicPlayer::playSound(Access, true);
-					MusicPlayer::playSound(Granted);
 
 					currentAccount = accounts.at(accountID);
 					ui->printColor("&4Авторизация успешна");
@@ -658,7 +651,6 @@ namespace realtyPriceRate {
 	void Database::showAccounts() {
 		if (accounts.empty())
 		{
-			MusicPlayer::playSound(Button_Failure);
 			ui->printColor("&2Список пуст");
 			return;
 		}
@@ -711,7 +703,6 @@ namespace realtyPriceRate {
 		if (isLoggedIn()) accounts.emplace_back(new Account(login, password, accountType, true));
 		else accounts.emplace_back(new Account(login, password, accountType, false));
 
-		MusicPlayer::playSound(Add);
 
 		writeAccountsToFile();
 	}
@@ -719,7 +710,6 @@ namespace realtyPriceRate {
 		showAccounts();
 
 		if (accounts.empty()) {
-			MusicPlayer::playSound(Button_Failure);
 			ui->printColor("&2 Нечего удалять");
 			return;
 		}
@@ -729,7 +719,6 @@ namespace realtyPriceRate {
 
 		if (currentAccount == accounts.at(id)) {
 			system("cls");
-			MusicPlayer::playSound(Error);
 			ui->printColor("&2Вы не можете удалить аккаунт в котором авторизованы");
 			return;
 		}
@@ -750,16 +739,11 @@ namespace realtyPriceRate {
 
 		if (currentAccount == accounts.at(id)) {
 			system("cls");
-			MusicPlayer::playSound(Button_Failure, true);
-			MusicPlayer::playSound(Error);
 			ui->printColor("&2Вы не можете отобрать доступ у аккаунта, в котором авторизованы");
 			return;
 		}
 
 		accounts.at(id)->access = !accounts.at(id)->access;
-		MusicPlayer::playSound(Access, true);
-		if (accounts.at(id)->access) MusicPlayer::playSound(Granted);
-		else MusicPlayer::playSound(Denied);
 
 		writeAccountsToFile();
 
@@ -768,7 +752,6 @@ namespace realtyPriceRate {
 	void Database::changePassword()
 	{
 		if (!isLoggedIn()) {
-			MusicPlayer::playSound(Error);
 			return;
 		}
 
@@ -799,7 +782,6 @@ namespace realtyPriceRate {
 	void Database::showGenericObjectInfo() {
 		if (objects.empty())
 		{
-			MusicPlayer::playSound(Button_Failure);
 			ui->printColor("&2Список объектов пуст");
 			return;
 		}
@@ -827,7 +809,6 @@ namespace realtyPriceRate {
 	void Database::showDetailObjectInfo() {
 		if (objects.empty())
 		{
-			MusicPlayer::playSound(Button_Failure);
 			ui->printColor("&2Список объектов пуст");
 			return;
 		}
@@ -856,7 +837,6 @@ namespace realtyPriceRate {
 	void Database::showRateObjectInfo() {
 		if (objects.empty())
 		{
-			MusicPlayer::playSound(Button_Failure);
 			ui->printColor("&2Список объектов пуст");
 			return;
 		}
@@ -897,7 +877,6 @@ namespace realtyPriceRate {
 			break;
 		}
 
-		MusicPlayer::playSound(Add);
 
 		writeObjectsToFile();
 	}
@@ -905,7 +884,6 @@ namespace realtyPriceRate {
 		showGenericObjectInfo();
 
 		if (objects.empty()) {
-			MusicPlayer::playSound(Button_Failure);
 			ui->printColor("&2 Нечего удалять :/");
 			return;
 		}
@@ -924,7 +902,6 @@ namespace realtyPriceRate {
 	{
 		if (objects.empty())
 		{
-			MusicPlayer::playSound(Button_Failure);
 			ui->printColor("&2Нечего оценивать");
 			return;
 		}
@@ -942,7 +919,6 @@ namespace realtyPriceRate {
 	void Database::findObjectName() {
 		if (objects.empty())
 		{
-			MusicPlayer::playSound(Button_Failure);
 			ui->printColor("&2Список объектов пуст");
 			return;
 		}
@@ -975,7 +951,6 @@ namespace realtyPriceRate {
 	void Database::findObjectMetersToMetro() {
 		if (objects.empty())
 		{
-			MusicPlayer::playSound(Button_Failure);
 			ui->printColor("&2Список объектов пуст");
 			return;
 		}

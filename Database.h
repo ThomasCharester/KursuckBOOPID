@@ -2,7 +2,6 @@
 #ifndef DATABASE
 #define DATABASE
 
-#include "Music.h"
 #include "Account.h"
 #include "Object.h"
 #include <fstream>
