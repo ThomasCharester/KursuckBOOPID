@@ -132,7 +132,6 @@
   <ItemGroup>
     <ClInclude Include="Account.h" />
     <ClInclude Include="Database.h" />
-    <ClInclude Include="Music.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="UserInterface.h" />
   </ItemGroup>
