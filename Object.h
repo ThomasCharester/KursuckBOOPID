@@ -249,7 +249,7 @@ namespace realtyPriceRate {
 		}
 		void calculatePrice() override {
 			rating.calculateRating();
-			finalPrice = (rating.rate/100) * (metersToMetro + squareMeters) / (GOSTSquareMetersPrice / 5252);
+			finalPrice = (((double)rating.rate/100.0) * (GOSTSquareMetersPrice * squareMeters)) / metersToMetro;
 		}
 
 		void getGenericInfo(vector<string>& row) override {
