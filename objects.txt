@@ -1,7 +1,11 @@
-3
-h 112 2 519 3
-r АлексейЦевелюк 45
-o Зона51 321 1790 800
-r АлексейЦевелюк 72
-o 1 7 222 3
-r АлексейЦевелюк 52
+6
+h House1 75 8986 900
+r Appraiser1 75
+h House2 42 17109 1200
+r Appraiser1 60
+h House3 110 14519 2000
+r Appraiser1 80
+o Office1 20 0 310
+r Appraiser1 50
+o Office2 60 0 100
+h Saray 12 0 3200
