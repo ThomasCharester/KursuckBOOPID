@@ -4,9 +4,6 @@ using namespace realtyPriceRate;
 
 int main() {
 
-	//MusicPlayer player;
-	//player.startPlaying();
-
 	MusicPlayer::playMusic();
 
 	UI ui(UI::colors::Yellow);

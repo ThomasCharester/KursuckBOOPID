@@ -125,6 +125,7 @@ namespace realtyPriceRate {
 				cin >> input;
 				SetConsoleCP(866);
 				if (cin.fail()) {
+					MusicPlayer::playSound(sounds::Button_Failure);
 					printColor("&2Неправильный тип данных!");
 					cin.clear();
 					cin.ignore(100500, '\n');
@@ -158,6 +159,7 @@ namespace realtyPriceRate {
 					input += ch;
 				}
 				ch = _getch();
+				MusicPlayer::playSound(sounds::Button_Press2);
 			} while (ch != 13);
 			SetConsoleCP(866);
 			return input;
@@ -206,11 +208,13 @@ namespace realtyPriceRate {
 #endif
 				cin >> input;
 				if (cin.fail()) {
+					MusicPlayer::playSound(sounds::Button_Failure);
 					printColor("&2Неправильный тип данных!");
 					cin.clear();
 					cin.ignore(100500, '\n');
 				}
 				else if ((max != min) && (input > max || input < min)) {
+					MusicPlayer::playSound(sounds::Button_Failure);
 					printColor("&2Введите значение в диапазоне от " + to_string(min) + " до " + to_string(max));
 				}
 				else {
@@ -239,7 +243,7 @@ namespace realtyPriceRate {
 		/// <param name="animation">Задержка между печатью символов.</param>
 		void printColor(string str, bool newLine = true, bool animation = false) {
 			SetConsoleCP(1251);
-			if (newLine)  cerr << '\n';
+			if (newLine)  cout << '\n';
 			bool flag = false;
 			for (char ch : str) {
 				if (animation) Sleep(ANIMATIONSPEED);
@@ -248,7 +252,7 @@ namespace realtyPriceRate {
 #endif
 				if (!flag)
 					if (ch != '&')
-						cerr << ch;
+						cout << ch;
 					else flag = true;
 				else {
 					setColor(static_cast<UI::colors>((ch - 48)));
