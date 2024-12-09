@@ -117,7 +117,7 @@ namespace realtyPriceRate {
 		/// <summary>
 		/// Запись в файл.
 		/// </summary>
-		virtual void addToFile() const = 0;;
+		virtual void addToFile() const = 0;
 		/// <summary>
 		/// Перегруженный оператор вывода в файл.
 		/// </summary>
