@@ -1,0 +1,97 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.2 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="25.0.2">
+  <diagram name="Страница — 1" id="GnXgacp2yRsejSCySz_q">
+    <mxGraphModel dx="1434" dy="814" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4O9Ohg4bMV1vvn4n8UUF-1" value="Оценка объектов недвижимости" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="280" y="320" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="4O9Ohg4bMV1vvn4n8UUF-2" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.205;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="160" as="sourcePoint" />
+            <mxPoint x="321" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4O9Ohg4bMV1vvn4n8UUF-3" value="Требования к курсовому проекту" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="180" y="180" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4O9Ohg4bMV1vvn4n8UUF-6" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.005;entryY=0.667;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="121" y="360" as="sourcePoint" />
+            <mxPoint x="280" y="360.03999999999996" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4O9Ohg4bMV1vvn4n8UUF-7" value="Данные об объекте" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="80" y="330" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4O9Ohg4bMV1vvn4n8UUF-10" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="4O9Ohg4bMV1vvn4n8UUF-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="480" y="390" as="sourcePoint" />
+            <mxPoint x="640" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4O9Ohg4bMV1vvn4n8UUF-11" value="Стоимость объекта недвижимости" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="590" y="330" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4O9Ohg4bMV1vvn4n8UUF-12" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="304.5" y="520" as="sourcePoint" />
+            <mxPoint x="304.5" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4O9Ohg4bMV1vvn4n8UUF-13" value="Пользователь" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="210" y="500" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4O9Ohg4bMV1vvn4n8UUF-14" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="520" as="sourcePoint" />
+            <mxPoint x="460" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4O9Ohg4bMV1vvn4n8UUF-15" value="Администратор" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="465.5" y="500" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4O9Ohg4bMV1vvn4n8UUF-16" value="0" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="430" y="410" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zEzUaes2J-3j2rl_Z2L4-1" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.005;entryY=0.667;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="121" y="420" as="sourcePoint" />
+            <mxPoint x="280" y="420.03999999999996" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zEzUaes2J-3j2rl_Z2L4-2" value="Данные пользователей" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="80" y="390" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="w7ERC_ztHe7ch3M-5Rk7-1" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.205;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="449.5" y="160" as="sourcePoint" />
+            <mxPoint x="450.5" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w7ERC_ztHe7ch3M-5Rk7-2" value="Правила оценки объектов недвижимости" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="450" y="180" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="w7ERC_ztHe7ch3M-5Rk7-3" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.205;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="160" as="sourcePoint" />
+            <mxPoint x="391" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w7ERC_ztHe7ch3M-5Rk7-4" value="Руководства к стандартным библиотекам c++" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="320" y="120" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="w7ERC_ztHe7ch3M-5Rk7-5" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="379.5" y="520" as="sourcePoint" />
+            <mxPoint x="379.5" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w7ERC_ztHe7ch3M-5Rk7-6" value="Программное обеспечение" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="335" y="520" width="90" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

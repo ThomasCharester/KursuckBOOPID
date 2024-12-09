@@ -1,0 +1,213 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.2 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="25.0.2">
+  <diagram name="Страница — 1" id="gR3v0quCML1lleDPphJZ">
+    <mxGraphModel dx="823" dy="561" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-1" value="Оценщик" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="40" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-2" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="mqqLPa5K6W-vw-bHL53M-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="620" as="sourcePoint" />
+            <mxPoint x="175" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-3" value="Программа" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-6" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="mqqLPa5K6W-vw-bHL53M-10" target="mqqLPa5K6W-vw-bHL53M-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="329.5" y="620" as="sourcePoint" />
+            <mxPoint x="329.5" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-7" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="mqqLPa5K6W-vw-bHL53M-20">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="509.5" y="620" as="sourcePoint" />
+            <mxPoint x="510" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-9" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="mqqLPa5K6W-vw-bHL53M-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="175" y="520" as="sourcePoint" />
+            <mxPoint x="180" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-8" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="150" width="10" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-11" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" target="mqqLPa5K6W-vw-bHL53M-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="260" as="sourcePoint" />
+            <mxPoint x="330" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-10" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="325" y="150" width="10" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-12" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" target="mqqLPa5K6W-vw-bHL53M-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="168" as="sourcePoint" />
+            <mxPoint x="320" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-13" value="Авторизация" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="140" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-14" value="" style="endArrow=open;html=1;rounded=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;dashed=1;endFill=0;" edge="1" parent="1" source="mqqLPa5K6W-vw-bHL53M-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="240" as="sourcePoint" />
+            <mxPoint x="183" y="203" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-15" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;Предоставление доступа&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="180" y="180" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-17" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" target="mqqLPa5K6W-vw-bHL53M-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="260" as="sourcePoint" />
+            <mxPoint x="330" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-18" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.1;entryY=0.183;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1.321;exitY=0.4;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="mqqLPa5K6W-vw-bHL53M-8" target="mqqLPa5K6W-vw-bHL53M-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="183" y="270" as="sourcePoint" />
+            <mxPoint x="325" y="275" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-19" value="Запрос списка&amp;nbsp;&lt;div&gt;недвижимости&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="195" y="230" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-21" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" target="mqqLPa5K6W-vw-bHL53M-20">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="510" y="520" as="sourcePoint" />
+            <mxPoint x="510" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;dashed=1;" edge="1" parent="1" source="mqqLPa5K6W-vw-bHL53M-20">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="335" y="300" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="450" y="300" />
+              <mxPoint x="450" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-20" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="505" y="270" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-23" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="mqqLPa5K6W-vw-bHL53M-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="329.5" y="620" as="sourcePoint" />
+            <mxPoint x="330" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-27" value="Загрузка базы данных" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="345" y="300" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-30" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="mqqLPa5K6W-vw-bHL53M-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="270" as="sourcePoint" />
+            <mxPoint x="330" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-35" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="mqqLPa5K6W-vw-bHL53M-36" target="mqqLPa5K6W-vw-bHL53M-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="329.5" y="620" as="sourcePoint" />
+            <mxPoint x="330" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-16" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="325" y="260" width="10" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-37" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" target="mqqLPa5K6W-vw-bHL53M-36">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="470" as="sourcePoint" />
+            <mxPoint x="330" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-36" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="325" y="340" width="10" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="mqqLPa5K6W-vw-bHL53M-36">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="360" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="180" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-41" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="520" as="sourcePoint" />
+            <mxPoint x="329.92857142857144" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;startArrow=classic;startFill=1;entryX=1.134;entryY=0.67;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="325" y="430" as="sourcePoint" />
+            <mxPoint x="181" y="431" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="181" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-43" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;Оценка объекта&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="195" y="400" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="mqqLPa5K6W-vw-bHL53M-45">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="335" y="455" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-45" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="505" y="445" width="10" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-46" value="Сохранение базы данных" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="335" y="430" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-47" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;База объектов недвижимости&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="421.25" y="98" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-48" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="480" y="35" width="60" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-50" value="" style="endArrow=open;html=1;rounded=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;dashed=1;endFill=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="325" y="313" as="sourcePoint" />
+            <mxPoint x="183" y="313" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-51" value="&lt;span style=&quot;font-size: 11px;&quot;&gt;Показ списка&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="210" y="290" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="505" y="280" as="sourcePoint" />
+            <mxPoint x="335" y="280" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="450" y="280" />
+              <mxPoint x="450" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-53" value="Запрос базы данных" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="350" y="250" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-56" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Выбор объекта для оценки&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="175" y="328" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-57" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;endFill=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="325" y="390" as="sourcePoint" />
+            <mxPoint x="183" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mqqLPa5K6W-vw-bHL53M-58" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Запрос данных для оценки&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="180" y="360" width="150" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
